@@ -1,4 +1,6 @@
 hs.window.animationDuration = 0
+
+-- Replacement for ShiftIt style app
 units = {
   right50       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
   left50        = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
@@ -11,12 +13,15 @@ units = {
   maximum       = { x = 0.00, y = 0.00, w = 1.00, h = 1.00 }
 }
 
-mash = { 'shift', 'ctrl', 'cmd' }
+mash = { 'ctrl', 'alt', 'cmd' }
 hs.hotkey.bind(mash, 'right', function() hs.window.focusedWindow():move(units.right50, nil, true) end)
 hs.hotkey.bind(mash, 'left',  function() hs.window.focusedWindow():move(units.left50,  nil, true) end)
 hs.hotkey.bind(mash, 'up',    function() hs.window.focusedWindow():move(units.top50,   nil, true) end)
 hs.hotkey.bind(mash, 'down',  function() hs.window.focusedWindow():move(units.bot50,   nil, true) end)
 hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
+
+hs.hotkey.bind(mash, "n", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():next()) end)
+hs.hotkey.bind(mash, "p", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():previous()) end)
 
 hyper = { 'shift', 'alt', 'cmd' }
 hs.hotkey.bind(hyper, 'right', function() hs.window.focusedWindow():move(units.upright50,  nil, true) end)
@@ -24,11 +29,7 @@ hs.hotkey.bind(hyper, 'left',  function() hs.window.focusedWindow():move(units.b
 hs.hotkey.bind(hyper, 'up',    function() hs.window.focusedWindow():move(units.upleft50,   nil, true) end)
 hs.hotkey.bind(hyper, 'down',  function() hs.window.focusedWindow():move(units.botright50, nil, true) end)
 
-meta = { 'ctrl', 'alt', 'cmd' }
-hs.hotkey.bind(meta, "n", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():next()) end)
-hs.hotkey.bind(meta, "p", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():previous()) end)
-
-
+-- Replacement for Caffeine style app
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
   local awake = hs.image.imageFromPath('caffeine/awake.png'):setSize({w=20,h=20})
