@@ -27,3 +27,25 @@ hs.hotkey.bind(hyper, 'down',  function() hs.window.focusedWindow():move(units.b
 meta = { 'ctrl', 'alt', 'cmd' }
 hs.hotkey.bind(meta, "n", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():next()) end)
 hs.hotkey.bind(meta, "p", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():previous()) end)
+
+
+caffeine = hs.menubar.new()
+function setCaffeineDisplay(state)
+  local awake = hs.image.imageFromPath('caffeine/awake.png'):setSize({w=20,h=20})
+  local sleepy = hs.image.imageFromPath('caffeine/sleepy.png'):setSize({w=20,h=20})
+
+  if state then
+    caffeine:setIcon(awake)
+  else
+    caffeine:setIcon(sleepy)
+  end
+end
+
+function caffeineClicked()
+    setCaffeineDisplay(hs.caffeinate.toggle("displayIdle"))
+end
+
+if caffeine then
+    caffeine:setClickCallback(caffeineClicked)
+    setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
+end
