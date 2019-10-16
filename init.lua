@@ -23,6 +23,11 @@ hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.ma
 hs.hotkey.bind(mash, "n", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():next()) end)
 hs.hotkey.bind(mash, "p", function() hs.window.focusedWindow():moveToScreen(hs.window.focusedWindow():screen():previous()) end)
 
+hs.hotkey.bind(mash, "=", function() hs.grid.resizeWindowWider(hs.window.focusedWindow()) end)
+hs.hotkey.bind(mash, "-", function() hs.grid.resizeWindowThinner(hs.window.focusedWindow()) end)
+hs.hotkey.bind(mash, "[", function() hs.grid.resizeWindowTaller(hs.window.focusedWindow()) end)
+hs.hotkey.bind(mash, "]", function() hs.grid.resizeWindowShorter(hs.window.focusedWindow()) end)
+
 hyper = { 'shift', 'alt', 'cmd' }
 hs.hotkey.bind(hyper, 'right', function() hs.window.focusedWindow():move(units.upright50,  nil, true) end)
 hs.hotkey.bind(hyper, 'left',  function() hs.window.focusedWindow():move(units.botleft50,  nil, true) end)
