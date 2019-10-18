@@ -71,6 +71,6 @@ function MoveWindowToSpace(sp)
     spaces.moveWindowToSpace(win:id(), spaceID)
     spaces.changeToSpace(spaceID)
 end
-for i = 1, 8  -- Update with the # of spaces you are using
+for i = 1, 8 do -- Update with the # of spaces you are using
   hs.hotkey.bind(meta, tostring(i), function() MoveWindowToSpace(i) end)
 end
