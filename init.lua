@@ -1,3 +1,6 @@
+local spaces = require("hs._asm.undocumented.spaces")
+local internal = require("hs._asm.undocumented.spaces.internal")
+
 hs.window.animationDuration = 0
 
 -- Replacement for ShiftIt style app
@@ -63,8 +66,7 @@ end
 
 meta = { 'ctrl', 'cmd' }
 -- move current window to the space sp
-local spaces = require("hs._asm.undocumented.spaces")
-function MoveWindowToSpace(sp)
+function moveWindowToSpace(sp)
     local win = hs.window.focusedWindow()
     local uuid = win:screen():spacesUUID()
     local spaceID = spaces.layout()[uuid][sp]
@@ -72,5 +74,15 @@ function MoveWindowToSpace(sp)
     spaces.changeToSpace(spaceID)
 end
 for i = 1, 8 do -- Update with the # of spaces you are using
-  hs.hotkey.bind(meta, tostring(i), function() MoveWindowToSpace(i) end)
+  hs.hotkey.bind(meta, tostring(i), function() moveWindowToSpace(i) end)
+end
+
+-- move to specific space
+splat = { 'ctrl', 'shift' }
+function moveToSpace(sp)
+  local spaceID = spaces.layout()[internal.spaceScreenUUID(internal.activeSpace())][sp]
+  spaces.changeToSpace(spaceID)
+end
+for i = 1, 8 do -- Update with the # of spaces you are using
+  hs.hotkey.bind(splat, tostring(i), function() moveToSpace(i) end)
 end
