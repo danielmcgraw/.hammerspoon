@@ -59,3 +59,18 @@ if caffeine then
     caffeine:setClickCallback(caffeineClicked)
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
+
+
+meta = { 'ctrl', 'cmd' }
+-- move current window to the space sp
+local spaces = require("hs._asm.undocumented.spaces")
+function MoveWindowToSpace(sp)
+    local win = hs.window.focusedWindow()
+    local uuid = win:screen():spacesUUID()
+    local spaceID = spaces.layout()[uuid][sp]
+    spaces.moveWindowToSpace(win:id(), spaceID)
+    spaces.changeToSpace(spaceID)
+end
+for i = 1, 8  -- Update with the # of spaces you are using
+  hs.hotkey.bind(meta, tostring(i), function() MoveWindowToSpace(i) end)
+end
