@@ -65,7 +65,7 @@ end
 
 
 meta = { 'ctrl', 'cmd' }
--- move current window to the space sp
+-- move current window to the space
 function moveWindowToSpace(sp)
     local win = hs.window.focusedWindow()
     local uuid = win:screen():spacesUUID()
@@ -77,8 +77,8 @@ for i = 1, 8 do -- Update with the # of spaces you are using
   hs.hotkey.bind(meta, tostring(i), function() moveWindowToSpace(i) end)
 end
 
--- move to specific space
 splat = { 'ctrl', 'shift' }
+-- move to specific space
 function moveToSpace(sp)
   local spaceID = spaces.layout()[internal.spaceScreenUUID(internal.activeSpace())][sp]
   spaces.changeToSpace(spaceID)
