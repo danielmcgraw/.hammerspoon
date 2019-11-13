@@ -86,3 +86,9 @@ end
 for i = 1, 8 do -- Update with the # of spaces you are using
   hs.hotkey.bind(splat, tostring(i), function() moveToSpace(i) end)
 end
+
+--- sleep
+hs.hotkey.bind(mash, "delete", hs.caffeinate.startScreensaver)
+
+-- lock screen
+hs.hotkey.bind(mash, "l", hs.caffeinate.lockScreen)
