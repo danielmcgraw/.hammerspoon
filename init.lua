@@ -44,8 +44,8 @@ hs.hotkey.bind(hyper, 'down',  function() hs.window.focusedWindow():move(units.b
 -- Replacement for Caffeine style app
 caffeine = hs.menubar.new()
 function setCaffeineDisplay(state)
-  local awake = hs.image.imageFromPath('caffeine/awake.png'):setSize({w=20,h=20})
-  local sleepy = hs.image.imageFromPath('caffeine/sleepy.png'):setSize({w=20,h=20})
+  local awake = hs.image.imageFromPath('~/.hammerspoon/caffeine/awake.png'):setSize({w=20,h=20})
+  local sleepy = hs.image.imageFromPath('~/.hammerspoon/caffeine/sleepy.png'):setSize({w=20,h=20})
 
   if state then
     caffeine:setIcon(awake)
